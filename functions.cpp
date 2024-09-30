@@ -2,7 +2,7 @@
 
 Stack::Stack() {
     count = 0;
-    top=nullptr;
+    top=nullptr;             //initially top is null
 }
 
 Stack::~Stack() {
@@ -15,10 +15,10 @@ void Stack::push(int val) {
         top=n1;
     }
     else {
-        n1->setNext(top);
+        n1->setNext(top);        //push element at first index
         top=n1;
     }
-    count++;
+    count++;                     //increase total size
 }
 
 void Stack::pop() {
@@ -28,8 +28,8 @@ void Stack::pop() {
         return;
     }
     else {
-        top=top->getNext();
-        count--;
+        top=top->getNext();              //remove first element and update top
+        count--;                         //decrase size
     }
 }
 
@@ -38,13 +38,13 @@ bool Stack::isEmpty() {
        return true;
    }
     else {
-        return false;
+        return false;           //check weather the stack is empty
     }
 }
 
 void Stack::clear() {
   while(!isEmpty()) {
-    pop();
+    pop();                           //clear whole stack
   }
 }
 
@@ -52,11 +52,11 @@ int Stack::peek() {
   if(isEmpty()) {
     return -1;
   }
-    return top->getData();
+    return top->getData();           //grt first element of stack
 }
 
 int Stack::size() {
-    return count;
+    return count;        //get total size of stack
 }
 
 void Stack::printStack() {
@@ -64,7 +64,7 @@ void Stack::printStack() {
     Node *temp=top;
     for (int i=0;i<count;i++) {
         cout<<temp->getData()<<" " << endl;
-        temp=temp->getNext();
+        temp=temp->getNext();                      //print elements of stack till last index
     }
 }
 
@@ -83,7 +83,7 @@ bool Queue::isEmpty() {
         return true;
     }
     else {
-        return false;
+        return false;            //check weather the queue is empty
     }
 }
 
@@ -96,11 +96,11 @@ void Queue::enqueue(int d) {
     }
     else {
         while(size<count ) {
-            temp1=temp1->getNext();
+            temp1=temp1->getNext();      //push element i queue
             size++;
         }
         temp1->setNext(temp);
-        count++;
+        count++;                        // increse size
     }
 
 }
@@ -110,8 +110,8 @@ void Queue::dequeue() {
         return;
     }
     else {
-        top=top->getNext();
-        count--;
+        top=top->getNext();           //remove first element
+        count--;                     //decrese size
     }
 }
 
@@ -120,7 +120,7 @@ int Queue::size() {
         return 0;
     }
     else {
-        return count+1;
+        return count+1;         //get size of queue
     }
 }
 
@@ -128,14 +128,14 @@ int Queue::peek() {
     if(isEmpty()) {
         return -1;
     }
-    return top->getData();
+    return top->getData();            //get first element of queue
 }
 
 
 void Queue::printQueue() {
     Node *temp=top;
     for (int i=0;i<=count;i++) {
-        cout<<temp->getData()<<endl;
+        cout<<temp->getData()<<endl;            //print each element of queue
         temp=temp->getNext();
     }
 
